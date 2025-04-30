@@ -1,0 +1,210 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  background-color: #f8eedb;
+}
+
+/* Used in Header.jsx, MasterCard.jsx, InfoCardTemplate.jsx */
+.roboto-main {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  color: #43250d;
+}
+.roboto-info {
+  font-family: "Roboto", sans-serif;
+  font-size: small;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  color: #43250d;
+}
+
+/* Used in Header.jsx, MasterCard.jsx, InfoCardTemplate.jsx */
+.pt-serif-regular {
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: large;
+  font-style: normal;
+  color: #bd6034;
+}
+
+.pt-serif-title-info {
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: medium;
+  font-style: normal;
+  color: #bd6034;
+}
+
+/* Used in Header.jsx, MasterCard.jsx, InfoCardTemplate.jsx */
+.pt-serif-bold {
+  font-family: "PT Serif", serif;
+  font-weight: 750;
+  font-style: normal;
+  color: #553318;
+}
+
+/* Used in Header.jsx, MasterCard.jsx, InfoCardTemplate.jsx */
+.pt-serif-regular-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #43250d;
+  opacity: 50%;
+  padding: 30px;
+}
+
+/* Used in Header.jsx, MasterCard.jsx, InfoCardTemplate.jsx */
+.pt-serif-bold-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Used in InfoCardTemplate.jsx */
+.console-R {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  font-style: normal;
+  color: #7c250f;
+}
+
+/* Used in InfoCardTemplate.jsx */
+.console-D {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  font-style: normal;
+  color: #355082;
+}
+
+/* Used in MasterCard.jsx */
+.card {
+  margin: 2em;
+  display: inline-block;
+  padding: 2em;
+  background-color: #fef4e0;
+  border-radius: 20px;
+  filter: drop-shadow(1px 3px 3px #b7afa0);
+}
+
+/* Used in MasterCard.jsx */
+.infoCard {
+  margin: auto;
+  padding: 2em;
+  background-color: #fef4e0;
+}
+
+/* Used in MasterCard.jsx */
+.card-content-height {
+  transition: height 0.23s ease;
+  overflow: hidden;
+  margin: 2px;
+  align-items: top;
+}
+
+.card-content-width {
+  display: inline;
+  margin: 2em;
+}
+
+/* Used in MasterCard.jsx */
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+/* Used in Header.jsx */
+.searchBar {
+  padding: 1em;
+  margin: 5em 1em;
+  display: inline-flex;
+  border-radius: 20px;
+  border: 1px solid #d7cdba;
+  background-color: #f8eedb;
+  box-shadow: inset 3px 1px 3px 1px #b7afa0;
+}
+
+/* Used in MasterCard.jsx */
+.search-button {
+  padding: 1em;
+  margin: 5em 1em; 
+  border-radius: 20px;
+  display: inline-block;
+  max-width: 100px;
+  position: relative;
+  border: 1px solid #886a4d;
+  background-color: #886a4d;
+  filter: drop-shadow(1px 2px 2px #b7afa0);
+  color: #f8eedb;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+/* Used in Header.jsx */
+.search-button:active {
+  filter: drop-shadow(0 0 0);
+}
+
+.all-faves-buttons {
+  padding: 1em;
+  margin: 0.7em; 
+  border-radius: 20px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid #886a4d;
+  background-color: #886a4d;
+  color: #f8eedb;
+  filter: drop-shadow(1px 2px 2px #b7afa0);
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+/* Used in Header.jsx */
+.all-faves-buttons:active {
+  filter: drop-shadow(0 0 0);
+}
+
+.fave-button {
+  border-radius: 10px; 
+  position: relative;
+  background-color: transparent;
+  color: #bd6034 ;
+  border-color: transparent;
+  font-size: x-large;
+  filter: drop-shadow(1px 2px 2px #b7afa0);
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+/* Used in Header.jsx */
+.fave-button:active {
+  filter: drop-shadow(0 0 0);
+}
+
+.container {
+  display: inline-flex;
+  margin: 1em;
+  align-items: center;
+  width: 75%;
+}
+
+.container-all-faves {
+  display: inline-block;
+  padding: 1%;
+  align-items: center;
+}
+
+.read-the-docs {
+  color: #888;
+}
