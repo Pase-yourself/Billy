@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const InfoCardTemplate = ({ bill, user, userFavorites }) => {
+const InfoCardTemplate = ({ bill, user, userFavorites, onFavoritesUpdated }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(undefined);
   const [favorites, setFavorites] = useState(userFavorites || []);
@@ -26,30 +26,34 @@ const InfoCardTemplate = ({ bill, user, userFavorites }) => {
       console.error("User is not defined.");
       return;
     }
-  
+
     const isAlreadyFavorited = favorites.includes(billId);
-  
+
     try {
       const response = await fetch(`http://localhost:3000/api/user/following`, {
         method: isAlreadyFavorited ? 'DELETE' : 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: user._id, bill_id: billId })
       });
-  
+
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
       }
-  
+
       setFavorites(prev =>
         isAlreadyFavorited
           ? prev.filter(id => id !== billId)
           : [...prev, billId]
       );
+
+      // Trigger re-fetch if available
+      if (typeof onFavoritesUpdated === 'function') {
+        onFavoritesUpdated();
+      }
     } catch (err) {
       console.error("Favorite toggle error:", err);
     }
   };
-  
 
   if (!Array.isArray(bill)) return null;
 
@@ -69,19 +73,6 @@ const InfoCardTemplate = ({ bill, user, userFavorites }) => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <h1>Bill Actions</h1>
-                <button
-                  onClick={() => toggleFavorite(item._id)}
-                  style={{
-                    border: 'none',
-                    background: 'none',
-                    fontSize: '1.5rem',
-                    color: favorites.includes(item._id) ? 'gold' : 'gray',
-                    cursor: 'pointer'
-                  }}
-                  title={favorites.includes(item._id) ? 'Unfavorite' : 'Favorite'}
-                >
-                  {favorites.includes(item._id) ? '★' : '☆'}
-                </button>
               </div>
 
               <button

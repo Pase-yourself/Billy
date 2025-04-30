@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import MasterCard from "../components/MasterCard";
+import { useSearch } from '../components/SearchContext';
 
 const Bills = () => {
   const { user: clerkUser } = useUser();
+  const { searchQuery } = useSearch();
   const [bills, setBills] = useState([]);
   const [mongoUser, setMongoUser] = useState(null);
 
-  // Fetch MongoDB user using Clerk user info
   useEffect(() => {
     if (clerkUser) {
       const emailObject = clerkUser.emailAddresses?.[0];
@@ -24,34 +25,32 @@ const Bills = () => {
         })
       })
         .then(res => res.json())
-        .then(data => {
-          console.log('✅ MongoDB user loaded:', data.user);
-          setMongoUser(data.user);
-        })
+        .then(data => setMongoUser(data.user))
         .catch(err => console.error('❌ Failed to fetch Mongo user:', err));
     }
   }, [clerkUser]);
 
-  // Fetch all bills
   useEffect(() => {
     fetch('http://localhost:3000/api/bills')
       .then(res => res.json())
-      .then(data => {
-        console.log("Fetched all bills:", data);
-        setBills(data);
-      })
+      .then(data => setBills(data))
       .catch(err => console.error("Error fetching bills:", err));
   }, []);
 
   if (!mongoUser) return <p>Loading user...</p>;
 
+  const filteredBills = bills.filter(bill =>
+    bill.bill_id.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <h2>All Bills</h2>
-      <MasterCard bill={bills} user={mongoUser} />
+      <MasterCard bill={filteredBills} user={mongoUser} />
     </div>
   );
 };
 
 export default Bills;
+
 

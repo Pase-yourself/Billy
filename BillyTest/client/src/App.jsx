@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { SignInPage, SignUpPage } from './components/Auth';
+import { SearchProvider } from './components/SearchContext.jsx';
 
 // Pages
 import Landing from './pages/Landing.jsx';
@@ -13,9 +14,11 @@ import NotFound from './pages/NotFound.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
+
 function App() {
   return (
     <>
+    <SearchProvider>
       <Header />
       <br />
 
@@ -49,6 +52,7 @@ function App() {
 
       <br />
       <Footer />
+      </SearchProvider>
     </>
   );
 }
